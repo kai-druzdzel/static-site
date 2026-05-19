@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>K. DRUZDZEL — Grimoire</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fdf9f0",
+                        "surface-container-high": "#ece8df",
+                        "inverse-on-surface": "#f4f0e7",
+                        "background": "#fdf9f0",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#004d61",
+                        "primary": "#161717",
+                        "surface-container-low": "#f7f3ea",
+                        "tertiary-fixed-dim": "#ffb1c8",
+                        "inverse-primary": "#c8c6c5",
+                        "on-primary-container": "#939292",
+                        "tertiary-fixed": "#ffd9e2",
+                        "on-primary-fixed": "#1b1c1c",
+                        "primary-fixed": "#e4e2e1",
+                        "surface-tint": "#5f5e5e",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-tertiary-container": "#ff4d98",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed": "#001f28",
+                        "outline-variant": "#c4c7c7",
+                        "surface-variant": "#e6e2d9",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#66d7fd",
+                        "outline": "#747878",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1c1c17",
+                        "inverse-surface": "#31312b",
+                        "tertiary-container": "#5b002d",
+                        "on-background": "#1c1c17",
+                        "on-tertiary-fixed": "#3e001d",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f1eee5",
+                        "surface": "#fdf9f0",
+                        "surface-container-highest": "#e6e2d9",
+                        "secondary": "#006780",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#b8eaff",
+                        "tertiary": "#350018",
+                        "secondary-fixed-dim": "#63d4fa",
+                        "on-tertiary-fixed-variant": "#8e004a",
+                        "primary-container": "#2b2b2b",
+                        "on-secondary-container": "#005c73",
+                        "surface-dim": "#dddad1",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "margin-page": "clamp(2.5rem, 8vw, 8rem)",
+                        "stack-md": "2rem",
+                        "stack-lg": "5rem",
+                        "stack-xl": "8rem",
+                        "gutter": "3rem"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Libre Caslon Text"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "caption": ["Libre Caslon Text"],
+                        "body-lg": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .halftone-bg-cyan:hover {
+            background-image: radial-gradient(#66d7fd 2px, transparent 2px);
+            background-size: 6px 6px;
+        }
+        .offset-border-cyan:active {
+            box-shadow: 4px 4px 0px 0px #66d7fd;
+            transform: translate(-2px, -2px);
+        }
+        .dot-leader::after {
+            content: " ...................................................................................................................................................................................................................................................................................................";
+            overflow: hidden;
+            white-space: nowrap;
+            color: #c4c7c7;
+            opacity: 0.3;
+            padding-left: 8px;
+        }
+        .woodcut-divider {
+            height: 1px;
+            background: #e6e2d9;
+            position: relative;
+            margin: 5rem 0;
+        }
+        .woodcut-divider::after {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fdf9f0;
+            padding: 0 1.5rem;
+            font-size: 1rem;
+            color: #747878;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-primary/10">
+<div class="flex justify-between items-center w-full px-margin-page py-8 max-w-[1920px] mx-auto">
+<a class="font-headline-lg text-headline-lg tracking-tighter text-primary" href="#">KAI DRUZDZEL</a>
+<nav class="hidden md:flex gap-12 items-center">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-secondary pb-1 transition-colors duration-300" href="#">Main</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:text-secondary transition-colors duration-300" href="#">Blog</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:text-secondary transition-colors duration-300" href="#">Interviews</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:text-secondary transition-colors duration-300" href="#">Tea</a>
+</nav>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-all">menu_book</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-all">auto_awesome</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Digital Amanuensis) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-72 bg-surface-container-low/50 border-r border-primary/10 py-12 z-40 mt-28">
+<div class="px-8 mb-stack-lg">
+<div class="w-16 h-16 bg-primary-container flex items-center justify-center rounded-none mb-6 overflow-hidden border border-primary/20">
+<img alt="Sacred Geometry Dodecahedron" class="w-12 h-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuQFOq-EXsXbkcdfKw_BDdk10SKgQvl6yP-uZGvmOp4gnvchIdZ0XAJFV6pAxKwxkLxbO_6d0PV81Fq1hmydYRHbwC5vzM9P3lVpR5aW0m0kSmDc5vG8En4_gXVqIgtY5OM6BAERlDZ8oL00tIa7onYynnTdg8klOlwcELJhsvhJRoBtPITN5vuAfs11-UIezELz7u1Nv-Fasi4Zw9PK7jaOgbSwRyqLBGu24zHYuhV7X15QYJCOhfHo481uwNRHKXMXskWuBsXmg"/>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">Kai Druzdzel</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70 tracking-widest">Digital Amanuensis</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span> The Sanctum
+            </a>
+<a class="flex items-center gap-4 bg-secondary-container/20 text-on-secondary-container border-l-4 border-secondary px-8 py-4 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]" style='font-variation-settings: "FILL" 1;'>menu_book</span> Research Files
+            </a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">record_voice_over</span> Transcripts
+            </a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">eco</span> Tea Journal
+            </a>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full py-4 border border-primary/20 font-label-caps text-label-caps hover:bg-[#66d7fd] transition-colors halftone-bg-cyan offset-border-cyan uppercase tracking-widest">
+                Correspondence
+            </button>
+<div class="mt-8 flex gap-6 pt-6 border-t border-primary/5">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">terminal</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-stack-xl pb-stack-xl px-margin-page max-w-[1400px]">
+<!-- Header Section -->
+<section class="mb-stack-xl">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-8 tracking-tight">GRIMOIRE</h1>
+<div class="flex items-center gap-6 text-on-surface-variant font-label-caps text-label-caps tracking-[0.2em] uppercase opacity-60">
+<span class="">Book I</span>
+<span class="w-16 h-[1px] bg-outline-variant"></span>
+<span class="">The Remembered Knowledge</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Index Sidebar -->
+<aside class="lg:col-span-3 space-y-12">
+<div class="sticky top-44">
+<h3 class="font-label-caps text-label-caps text-primary border-b border-primary/10 pb-4 mb-8 tracking-widest">CATEGORIES</h3>
+<ul class="space-y-6">
+<li class="">
+<a class="flex justify-between items-center group" href="#">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-secondary transition-colors italic leading-relaxed">Atlantean Research</span>
+<span class="font-label-caps text-label-caps text-outline opacity-50">01</span>
+</a>
+</li>
+<li class="">
+<a class="flex justify-between items-center group" href="#">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-secondary transition-colors italic leading-relaxed">Automatic Writing</span>
+<span class="font-label-caps text-label-caps text-outline opacity-50">04</span>
+</a>
+</li>
+<li class="">
+<a class="flex justify-between items-center group" href="#">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-secondary transition-colors italic leading-relaxed">Karma &amp; Ethics</span>
+<span class="font-label-caps text-label-caps text-outline opacity-50">02</span>
+</a>
+</li>
+<li class="">
+<a class="flex justify-between items-center group" href="#">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-secondary transition-colors italic leading-relaxed">Esoteric Mechanics</span>
+<span class="font-label-caps text-label-caps text-outline opacity-50">07</span>
+</a>
+</li>
+</ul>
+<div class="mt-20 p-10 bg-surface-container-low border border-primary/5 relative overflow-hidden">
+<div class="absolute -top-4 -right-4 p-2 opacity-5">
+<span class="material-symbols-outlined text-8xl">local_library</span>
+</div>
+<h4 class="font-label-caps text-label-caps font-bold mb-4 tracking-widest">ANNOTATION</h4>
+<p class="font-caption text-body-md italic leading-relaxed text-on-surface-variant">
+                            "To know God is to know all worlds whatever." — Axte Incal, Axtuce Mun.
+                        </p>
+</div>
+</div>
+</aside>
+<!-- Entries Feed -->
+<div class="lg:col-span-9 space-y-stack-xl">
+<!-- Entry 01 -->
+<article class="group cursor-pointer">
+<div class="flex items-baseline justify-between mb-8">
+<div class="flex items-baseline gap-2 flex-grow overflow-hidden">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">CHAPTER I</span>
+<div class="dot-leader flex-grow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-primary ml-8 tracking-widest">PAGE 25</span>
+</div>
+<div class="flex flex-col md:flex-row gap-12 mt-8">
+<div class="w-full md:w-2/5 aspect-[4/5] bg-surface-container-high border border-primary/10 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-1000" data-alt="A vintage style artistic photograph of a mountain top engulfed in golden volcanic light. The scene is rendered with heavy halftone grain and high contrast ink-bleed effects, reminiscent of a 19th-century occult book illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsgkxy6L_IfFn1_qsJGWsy64BziYzhqepHEjajs2HQftKPqY47jkJW6S09aAfzvgW34VZD9Spj1iEO0JJrVHpjvj1T4CWI--mNGUP-d7Ou0pquVqu9zdqQA4ULkdElfx7dV1FcnpiA24H1ueB0EDvfWTRUuSWsvNcRY7e1QJwDPHMte8-pPOZ1PfxAY9p1dduqafmeXmfUo8VELdupJlH_jlfzuHEOIwIDjGdPXTjy-neKTHsMoXg8VIWQ74NwR9_tpkO_y5-peew"/>
+<div class="absolute top-4 left-4 bg-primary text-surface-bright px-3 py-1 font-label-caps text-[10px] tracking-widest">ATL-01</div>
+</div>
+<div class="w-full md:w-3/5 py-4">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8 group-hover:text-secondary transition-colors leading-tight">Atlantis, Queen of the Sea and of the World</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10">
+                                Zailm's pilgrimage to the top of Pitach Rhok to worship his Deity. He finds gold. The volcanic eruption—he is almost overtaken by lava flow, but escapes into the caverns of the ancients.
+                            </p>
+<div class="flex gap-4">
+<span class="font-label-caps text-[10px] text-outline border border-outline-variant px-3 py-1.5 opacity-60">MYTHOLOGY</span>
+<span class="font-label-caps text-[10px] text-outline border border-outline-variant px-3 py-1.5 opacity-60">CHRONICLE</span>
+</div>
+</div>
+</div>
+</article>
+<div class="woodcut-divider"></div>
+<!-- Entry 02 -->
+<article class="group cursor-pointer">
+<div class="flex items-baseline justify-between mb-8">
+<div class="flex items-baseline gap-2 flex-grow overflow-hidden">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">CHAPTER II</span>
+<div class="dot-leader flex-grow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-primary ml-8 tracking-widest">PAGE 41</span>
+</div>
+<div class="flex flex-col md:flex-row-reverse gap-12 mt-8">
+<div class="w-full md:w-2/5 aspect-[4/5] bg-surface-container-high border border-primary/10 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-1000" data-alt="Detailed technical line art of an impossible mechanical structure resembling a clockwork city." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAUU4wUWY9XIzOhbnvRWCKEOSjUND9A355FgQgJJotFut5tCjHAffs0LOOLIJMmmPKVVJg7sCCfuXCidninDUbOUpWYDVeAbbS5lL8zuNaE4TauRa_Sm5nVyoOK6pvTSMXc8lTS2Tj6nPtiqMmdkXpzjSdWlgSA1YZkKyaOaHvw3kagDHfaJZ1auwALvqPoo_s5HiD568c4u5NR-MgfVB_wEhu9_81-xEr2GS7z5Wg3EiwaucNCMgp4hkwOO12sMJjYOgZ1_rGAxk"/>
+<div class="absolute top-4 right-4 bg-primary text-surface-bright px-3 py-1 font-label-caps text-[10px] tracking-widest">MECH-04</div>
+</div>
+<div class="w-full md:w-3/5 py-4">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8 group-hover:text-secondary transition-colors leading-tight">Caiphul, the Capital of the Poseidii</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10">
+                                Its people, its form of Government; politics and marvelous mechanical features. Excerpts from labor laws. Electrodic transit systems and the primary principles of aerial navigation without gas or sails.
+                            </p>
+<div class="flex gap-4">
+<span class="font-label-caps text-[10px] text-outline border border-outline-variant px-3 py-1.5 opacity-60">SOCIOLOGY</span>
+<span class="font-label-caps text-[10px] text-outline border border-outline-variant px-3 py-1.5 opacity-60">ARCHAEOLOGY</span>
+</div>
+</div>
+</div>
+</article>
+<div class="woodcut-divider"></div>
+<!-- Entry 03 -->
+<article class="group cursor-pointer">
+<div class="flex items-baseline justify-between mb-8">
+<div class="flex items-baseline gap-2 flex-grow overflow-hidden">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">CHAPTER IV</span>
+<div class="dot-leader flex-grow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-primary ml-8 tracking-widest">PAGE 60</span>
+</div>
+<div class="mt-12 p-16 border border-primary/10 bg-surface-container-low/30 relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-primary opacity-10 text-6xl">auto_stories</span>
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-10">The Unseen Forces of the Incal</h2>
+<p class="font-body-lg text-body-lg italic leading-relaxed text-on-surface mb-12">
+                                "Physical science as understood by the Poseidii... they held that but One Substance existed, and but One Energy, the one being Incal externalized, and the other His Life in action in His Body."
+                            </p>
+<button class="px-10 py-4 bg-primary text-surface font-label-caps text-label-caps hover:bg-secondary transition-all offset-border-cyan tracking-widest uppercase">
+                                Read Full Transcript
+                            </button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-primary/10 mt-stack-xl bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-page py-stack-lg max-w-[1920px] mx-auto">
+<div class="font-label-caps text-label-caps font-bold text-primary mb-8 md:mb-0 tracking-widest opacity-60">
+                © MCMXCIX-MMXXIV K. DRUZDZEL — ALL KNOWLEDGE IS REMEMBERED
+            </div>
+<nav class="flex gap-12">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors underline decoration-primary/20 underline-offset-4" href="#">Colophon</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Esoterica</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Newsletter</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+<!-- Back to top floating element (Esoteric Motif) -->
+<div class="fixed bottom-12 right-12 w-14 h-14 border border-primary/20 flex items-center justify-center cursor-pointer bg-surface/80 backdrop-blur-md hover:bg-secondary-container transition-all z-50 opacity-0 pointer-events-none" id="scroll-anchor">
+<span class="material-symbols-outlined text-primary">keyboard_double_arrow_up</span>
+</div>
+<script>
+        // Simple scroll interaction for the back-to-top anchor
+        window.addEventListener('scroll', () => {
+            const anchor = document.getElementById('scroll-anchor');
+            if (window.scrollY > 800) {
+                anchor.style.opacity = '1';
+                anchor.style.pointerEvents = 'auto';
+            } else {
+                anchor.style.opacity = '0';
+                anchor.style.pointerEvents = 'none';
+            }
+        });
+
+        document.getElementById('scroll-anchor').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Atmospheric interaction: subtle movement of backgrounds
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            document.querySelectorAll('.group-hover\\:scale-105').forEach(img => {
+                img.style.transform = `translate(${x * 10}px, ${y * 10}px) scale(1.05)`;
+            });
+        });
+    </script>
+</body></html>
